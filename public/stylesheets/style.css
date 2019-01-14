@@ -139,7 +139,8 @@ p {
     height: 180px;
     border: 1px solid white;
     margin: 10px;
-    cursor: pointer;
+    /*cursor: pointer;*/
+    /*box-shadow: 4px 3px 5px 0px #272E36;*/
 }
 
 .project-type {
@@ -149,18 +150,24 @@ p {
     background-color: white
 }
 
+.project-type p {
+    line-height: 60px;
+    padding: 0;
+}
+
 .project-type p ion-icon {
     line-height: 60px;
     vertical-align: middle;
-    font-size: 2em;
+    font-size: 2.5em;
     padding: 0;
     color: #485564;
+    /*color: #1984FF;*/
     font-weight: bold;
     font-family: 'Reem Kufi', sans-serif;
 }
 
-.card-title {
-    font-size: 1.3rem;
+.card-t {
+    font-size: 1.1rem;
     text-align: center;
-    line-height: 120px;
 }
+
