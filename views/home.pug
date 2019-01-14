@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+  svg
+
+  div(id="nav-bar")
+    ul(id="nav-list")
+      li(id="projects-link") Projects
+      li(id="about-link") About
+
+  div(id="intro-container")
+    div(id="intro")
+      h1(class="fancy") Hello, I'm Clay!
+      div(class="sub-header") Full Stack Dev &nbsp;|&nbsp; Problem Solver
+
+  div(id="about-me")
+    h2() About
+    p I'm into JavaScript and making the web work.
+    p When my dev senses kick-in I build presumably awesome stuff. I stay close to the community and try to keep tabs with the pace at which the web is evolving. I also like to blog what I learn.
+    p I built this site from scratch. By scratch, I mean absolutely from scratch without any UI library/framework (except React though) and had so much fun along the way.
+    p React-Redux, Node.js, Ruby on Rails, Java, Spring Boot, Docker and AWS are the main tricks up my sleeve. I am also obsessed with making the web look pretty with SASS/CSS.
+
+  div(id="projects")
+    h2 Projects
+    p Here's a few things I've built in my spare time
+    div(class="flex")
+      div(class="card")
+        div(class="project-type")
+          p
+            ion-icon(name="logo-nodejs")
+        div(class="card-title") Text Generator
+      div(class="card")
+        div(class="project-type")
+          p
+            ion-icon(name="logo-javascript")
+        div(class="card-title") Text Generator
+      div(class="card")
+        div(class="project-type")
+          p
+            ion-icon(name="logo-android")
+        div(class="card-title") Text Generator
+
+
+  include scripts
+

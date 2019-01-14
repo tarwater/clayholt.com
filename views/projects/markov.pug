@@ -1,0 +1,192 @@
+doctype html
+html
+  head
+    title Text Generator
+    script(src='/javascripts/jquery-3.2.1.min.js')
+    script(src='/javascripts/app.js')
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  style.
+    @import url('https://fonts.googleapis.com/css?family=Italianno|Short+Stack');
+
+    h1 {
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
+
+    #text-display {
+      margin-top: 25px;
+      border-radius: 5px;
+      padding: 5px;
+      border: 2px solid #6d7275;
+      font-size: 1.2em;
+      min-height: 128px;
+    }
+
+    #btn-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .btn {
+      padding: 10px 20px 10px 20px;
+      font-size: 1.5em;
+      background: white;
+      border: solid #e5e5e5 2px;
+      color: gray;
+      cursor: pointer;
+      width: 100px;
+      text-align: center;
+    }
+
+    .active-btn {
+      border: solid black 2px;
+      color: black;
+    }
+
+    #shakes-btn {
+      font-family: "Italianno", cursive;
+      font-size: 1.9em;
+    }
+
+    #trump-btn {
+      font-family: 'Short Stack', cursive;
+    }
+
+    #gen-btn {
+      margin: 25px auto auto;
+    }
+
+    #gen-btn:hover {
+      color: white;
+      background-color: black;
+    }
+    
+    #customize {
+      width: 80%;
+      margin: auto;
+    }
+
+    #customize p {
+      text-align: right;
+
+    }
+
+    li {
+      float: right;
+      margin-left: 10px;
+      margin-top: 3px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .link {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+body
+    h1 Markov Chain Text Generation
+    div(style="width: 80%; margin: auto; ")
+      p.
+        This program generates text in the style of either Shakespeare or Donald Trump. It was built with corpora of text documents
+        (Shakespeare's plays and Trump's speeches). The documents were processed a bit to create uniformity, then were tokenized and split into bigrams and trigrams.
+        These n-grams were used to create conditional frequency distributions of consecutive word occurrences. For example, the word "dog" might have a 50% chance of being
+        followed by "food", 25% chance of "park", 10% of "barking", and so forth. With these probabilities, and given a seed phrase, we can generate passages of text
+        that possess a similar style to the original authors, although with an obvious and amusing loss of semantic content.
+      div(id="btn-container")
+        div(id="shakes-btn" class="btn active-btn") Shakespeare
+        div(id="trump-btn" class="btn") Trump
+      div(id="text-display") Loading...
+    div(id="customize" class="link")
+      p(id="info") Customize
+      ul(class="hidden")
+        li
+          input(placeholder="minimum # of words" id="wordCount")
+        li
+          input(placeholder="seed" id="seed")
+      br
+
+    div(id="gen-btn" class="btn active-btn") Generate
+    br
+    a(href="/projects" class="blinkLink") Back
+
+    script.
+        var speaker = "shakespeare";
+        var length = 50;
+
+        var randomSeeds = ["We are", "There is", "One day"];
+
+        $("#shakes-btn").on("click", function () {
+            $(this).addClass("active-btn")
+            $("#trump-btn").removeClass("active-btn");
+
+            speaker = "shakespeare";
+        });
+
+        $("#trump-btn").on("click", function () {
+            $(this).addClass("active-btn")
+            $("#shakes-btn").removeClass("active-btn");
+
+            speaker = "trump";
+        });
+
+        $("#gen-btn").on("click", function () {
+            generate(speaker, length);
+        });
+
+        $("#customize").on("click", function () {
+           $("#info").html("Note: Seed must be two words, and is case sensitive. Choose a phrase they've likely used.");
+           $("ul").removeClass("hidden");
+           $(this).removeClass("link");
+        });
+
+        generate(speaker, length);
+
+        function writeText(text) {
+            clearInterval(interval);
+
+            var startString = "";
+            var endString = text
+
+            var interval = window.setInterval(function () {
+                startString += endString.charAt(0);
+                endString = endString.slice(1, endString.length);
+
+                $("#text-display").html(startString);
+
+                if (endString.length === 0)
+                    clearInterval(interval);
+            }, 10);
+        };
+
+        function generate(speaker) {
+            $("#text-display").html("Loading...")
+
+            var seed = $("#seed").val() || randomSeeds[Math.floor(Math.random() * randomSeeds.length)];
+            console.log(seed);
+            var wordCount = $("#wordCount").val();
+            var length = wordCount || 50;
+
+            if(length > 200){
+                length = 200;
+            } else if (isNaN(length)){
+                length = 50;
+            }
+
+            $.ajax({
+                url: '/projects/markov/generate?speaker=' + speaker + "&seed=" + seed + "&length=" + length,
+                method: 'GET',
+                success: function (data) {
+                    writeText(data);
+                }, error: function (a, c, d) {
+                    console.log(a);
+                }
+            });
+        }
+
