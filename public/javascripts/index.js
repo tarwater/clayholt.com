@@ -6,7 +6,7 @@ function resize() {
     W = window.innerWidth;
 
     document.getElementById("intro-container").style.height = H + "px";
-    document.getElementById("about-me").style.height = H + "px";
+    // document.getElementById("about-me").style.height = H + "px";
     document.getElementById("projects").style.height = H + "px";
 }
 
@@ -74,8 +74,6 @@ setInterval(function () {
     circles.attr("cy", function (d) {
         return d.y;
     });
-
-
 }, 25);
 
 let aboutLink = document.getElementById("about-link");

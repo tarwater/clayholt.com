@@ -40,6 +40,9 @@ body {
     background: rgba(12, 26, 38, 1);
 }
 
+.highlight {
+    background-color: rgba(12, 26, 38, 1);
+}
 svg {
     position: fixed;
     z-index: -1;
@@ -166,8 +169,20 @@ p {
     font-family: 'Reem Kufi', sans-serif;
 }
 
-.card-t {
+.card-projects {
     font-size: 1.1rem;
-    text-align: center;
+    padding: 5px;
+    line-height: 1.7rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    padding-bottom: 2px;
+}
+
+a:hover {
+    border: none;
 }
 
