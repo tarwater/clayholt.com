@@ -72,7 +72,8 @@ h1 {
 h2 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    font-weight: 900;
+    /*font-weight: 900;*/
+    font-family: 'Reem Kufi', sans-serif;
 }
 
 .sub-header {
@@ -108,6 +109,7 @@ p {
     width: 100%;
     background-color: rgba(72, 85, 100, 0.8);
     z-index: 0;
+    font-family: 'Reem Kufi', sans-serif;
 }
 
 #nav-list {
@@ -128,7 +130,20 @@ p {
 }
 
 #nav-list li:hover {
-    text-decoration: underline;
+    color: #FFA340;
+}
+
+.nav-logo {
+    padding-top: 11px !important;
+}
+
+.nav-logo a {
+    font-size: 2rem;
+    border: none;
+}
+
+.nav-logo a:hover {
+    color: #FFA340;
 }
 
 .flex {
@@ -164,15 +179,13 @@ p {
     font-size: 2.5em;
     padding: 0;
     color: #485564;
-    /*color: #1984FF;*/
     font-weight: bold;
-    font-family: 'Reem Kufi', sans-serif;
 }
 
 .card-projects {
     font-size: 1.1rem;
     padding: 5px;
-    line-height: 1.7rem;
+    line-height: 2rem;
 }
 
 a {

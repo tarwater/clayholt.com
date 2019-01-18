@@ -8,6 +8,12 @@ block content
         ul(id="nav-list")
             li(id="projects-link") Projects
             li(id="about-link") About
+            li(class="nav-logo")
+                a(href="https://www.linkedin.com/in/clay-holt")
+                    ion-icon(name="logo-linkedin")
+            li(class="nav-logo")
+                a(href="https://github.com/tarwater")
+                    ion-icon(name="logo-github")
 
     div(id="intro-container")
         div(id="intro")
@@ -17,10 +23,9 @@ block content
     div(id="about-me")
         h2() About
         p!= "I'm a <span class='highlight'>full-stack web</span> and <span class='highlight'> mobile developer</span> in Charlotte, USA."
-        p!= "Currently I'm spending my time building apps supporting research and operations at UNC Charlotte, where I earned my undergraduate degree. I'm also working on my <span class='highlight'>Master of Computer Science degree</span> at Georgia Tech."
-        p I built this site from scratch. By scratch, I mean absolutely from scratch without any UI library/framework (except React though) and had so much fun along the way.
-        p My main tools are <span class='highlight'>PHP + Laravel</span>, <span class='highlight'>Node.js</span>, <span class='highlight'>Java</span>, and <span class='highlight'>Linux</span>. I'm also learning <span class='highlight'>React</span>.
-
+        p!= "My main tools are <span class='highlight'>PHP + Laravel</span>, <span class='highlight'>Node.js</span>, <span class='highlight'>Java</span>, and <span class='highlight'>Linux</span>. I'm also learning <span class='highlight'>React</span>."
+        p!= "Currently I'm spending my time building apps to support research and operations at UNC Charlotte, where I earned my undergraduate degree. I'm also working on my <span class='highlight'>Master of Computer Science</span> degree at Georgia Tech."
+        p!= "My tech-related interests include natural language processing, data visualization, and human-computer interaction. When not developing, I can often be found cooking, running, or buried in a book."
     div(id="projects")
         h2 Projects
         p Here's a few things I've built in my spare time
@@ -30,27 +35,27 @@ block content
                     p
                         ion-icon(name="logo-nodejs")
                 div(class="card-projects")
-                    a(href="") Text Generator
+                    a(href="/projects/markov") Text Generator
                     br
-                    a(href="") CRUD Demo
+                    a(href="/projects/movies") CRUD Demo
                     br
-                    a(href="") IRC Game Bot
+                    a(href="https://github.com/tarwater/node-game-bot") IRC Game Bot
             div(class="card")
                 div(class="project-type")
                     p
                        ion-icon(name="logo-javascript")
                 div(class="card-projects")
-                    a(href="") Snake Game
+                    a(href="/projects/snake") Snake Game
                     br
-                    a(href="") Simon
+                    a(href="/projects/simon") Simon
                     br
-                    a(href="") D3 Heat Map
+                    a(href="/projects/heatmap") D3 Heat Map
             div(class="card")
                 div(class="project-type")
                     p
                         ion-icon(name="logo-android")
                 div(class="card-projects")
-                    a(href="") Meditation Timer
+                    a(href="https://play.google.com/store/apps/details?id=com.clay.meditation") Meditation Timer
 
 
     include scripts
