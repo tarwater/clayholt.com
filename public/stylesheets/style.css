@@ -43,7 +43,8 @@ body {
 .highlight {
     background-color: rgba(12, 26, 38, 1);
 }
-svg {
+
+.mySVG {
     position: fixed;
     z-index: -1;
 }
