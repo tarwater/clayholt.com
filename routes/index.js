@@ -7,8 +7,7 @@ var markov = require('../controllers/markov');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // res.render('index', { title: 'Express' });
-  res.render('home');
+  res.render('index');
 });
 
 // Project routes
