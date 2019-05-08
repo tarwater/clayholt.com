@@ -39,5 +39,9 @@ router.post('/projects/movies/login', movies.login);
 router.get('/projects/movies/list', movies.getList);
 
 
+router.get('/*', function (req, res) {
+    res.render('index');
+});
+
 
 module.exports = router;
