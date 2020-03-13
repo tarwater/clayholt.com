@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Sen:400,700&display=swap');
+
+body {
+    margin-top: 60px;
+    margin-left: 25px;
+    line-height: 18px;
+    color: #656565;
+    font-family: 'Sen', Arial, sans-serif;
+}
+
+@media(min-width: 530px) {
+    body {
+        margin-left: 50px;
+    }
+}
+
+
+@media(min-width: 960px) {
+    body {
+        margin-left: 200px;
+    }
+}
+
+.header-stuff {
+    margin-bottom: 60px;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #303030;
+}
+
+ul {
+    margin-top: 10px;
+}
+
+ul span {
+    font-size: .8em;
+    margin-left: 10px;
+}
+
+a {
+    color: #303030;
+    text-decoration: none;
+}
+
+a:hover {
+    background: linear-gradient(to right, #A800FF, #0079FF, #00F11D, #FFEF00, #FF7F00, #FF0900);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: Gradient 1.5s linear infinite;
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0 50%
+    }
+}

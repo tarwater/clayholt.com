@@ -5,8 +5,8 @@
  */
 
 let mainApp = require('../app');
+let writerApp = require('../writerApp');
 let debug = require('debug')('node-site:server');
-let http = require('http');
 let vhost = require('vhost');
 let connect = require('connect');
 
@@ -25,16 +25,11 @@ let port = normalizePort(process.env.PORT || '3000');
  * Create HTTP server.
  */
 
-let writerApp = connect();
-writerApp.use(function (req, res) {
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('hello from mail!')
-});
 
 let containerApp = connect();
 
-containerApp.use(vhost('clayholt.writer', writerApp));
-containerApp.use(vhost('clayholt.blah', mainApp));
+containerApp.use(vhost('dissolution.writer', writerApp));
+containerApp.use(vhost('clayholt.com', mainApp));
 
 containerApp.listen(port);
 // let server = http.createServer(mainApp);
