@@ -29,7 +29,7 @@ let port = normalizePort(process.env.PORT || '3000');
 let containerApp = connect();
 
 containerApp.use(vhost('dissolution.writer', writerApp));
-containerApp.use(vhost('clayholt.com', mainApp));
+containerApp.use(vhost('clayholt.writer', mainApp));
 
 containerApp.listen(port);
 // let server = http.createServer(mainApp);
