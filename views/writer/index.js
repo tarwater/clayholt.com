@@ -1,3 +1,33 @@
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const canvas = document.getElementById("canvas");
+const renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+const TURN_SPEED = 0.0005;
+
+camera.position.z = 15;
+
+renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setClearColor(0xffffff);
+
+// let geometry = new THREE.BoxGeometry(1,1,1);
+let geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+let material = new THREE.MeshBasicMaterial( {
+    color: "#e9e9e9", wireframe: true, transparent: true
+});
+let model = new THREE.Mesh ( geometry, material );
+
+scene.add( model );
+
+function animate() {
+    requestAnimationFrame( animate );
+    model.rotation.x += TURN_SPEED;
+    model.rotation.y += TURN_SPEED;
+    model.rotation.z += TURN_SPEED;
+    renderer.render( scene, camera );
+}
+animate();
+
+/*
 const colors = ['#A800FF',
     '#0079ff',
     '#00f11d',
@@ -145,3 +175,4 @@ window.addEventListener("touchend", onTouchEnd);
 document.fonts.ready.then(initScene);
 
 requestAnimationFrame(render);
+*/
